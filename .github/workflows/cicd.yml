@@ -36,7 +36,7 @@ jobs:
 
     - name: Gitleaks Installation
       run: |
-         sudo yum install -y wget curl
+         sudo dnf install -y wget curl
          wget https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64 -O gitleaks     
    
 
