@@ -32,6 +32,9 @@ jobs:
         sudo dnf install -y dnf-plugins-core
         sudo dnf config-manager --add-repo https://aquasecurity.github.io/trivy-repo/rpm/releases/x86_64/
         sudo dnf install -y trivy
+        wget https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0.18.3_Linux-64bit.deb
+        sudo dpkg -i trivy_0.18.3_Linux-64bit.deb
+
         
     - name: Trivy FS Scan
       run: trivy fs --format table -o fs-report.json .
