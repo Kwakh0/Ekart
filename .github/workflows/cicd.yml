@@ -37,7 +37,10 @@ jobs:
     - name: Gitleaks Installation
       run: |
          sudo dnf install -y wget curl
-         wget https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64 -O gitleaks     
+         wget https://github.com/gitleaks/gitleaks/releases/download/v8.0.0/gitleaks-8.0.0-linux-amd64.rpm
+         sudo dnf install gitleaks-8.0.0-linux-amd64.rpm
+         gitleaks --version
+
    
 
     - name: Run Gitleaks Scan
