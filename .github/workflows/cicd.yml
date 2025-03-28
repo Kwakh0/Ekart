@@ -39,12 +39,14 @@ jobs:
 
     - name: Gitleaks Installation
       run: |
-          curl -s https://api.github.com/repos/gitleaks/gitleaks/releases/latest | grep browser_download_url | grep linux_x64.tar.gz | cut -d '"' -f 4 | wget -qi -
-          tar -xvzf gitleaks_*_linux_x64.tar.gz
-          sudo mv gitleaks /usr/local/bin/
-          gitleaks version
+         curl -s https://api.github.com/repos/gitleaks/gitleaks/releases/latest | grep browser_download_url | grep linux_x64.tar.gz | cut -d '"' -f 4 | wget -qi -
+         tar -xvzf gitleaks_*_linux_x64.tar.gz
+         sudo mv gitleaks /usr/local/bin/
+         gitleaks version
       
     - name: Gitleaks Code Scan
-      run: gitleaks detect source . -r gitleaks-report.json -f json
+      run: |
+         gitleaks detect --source=. --report=gitleaks-report.json --format=json
+
 
    
