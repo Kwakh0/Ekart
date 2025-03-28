@@ -35,11 +35,7 @@ jobs:
           trivy --version
 
     - name: Gitleaks Installation
-      run: |
-          wget https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64 -O gitleaks
-          chmod +x gitleaks
-          sudo mv gitleaks /usr/local/bin/
-          gitleaks version
+      run: sudo apt install gitleaks -y
     - name: Gitleaks Code Scan
       run: gitleaks detect source . -r gitleaks-report.json -f json
 
