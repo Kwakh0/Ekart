@@ -38,7 +38,7 @@ jobs:
       run: |
          sudo dnf install -y wget curl
          wget https://github.com/gitleaks/gitleaks/releases/download/v8.0.0/gitleaks-8.0.0-linux-amd64.rpm
-         sudo dnf install gitleaks-8.0.0-linux-amd64.rpm
+         sudo dnf install gitleaks-8.0.0-linux-amd64.rpm -y
          gitleaks --version
 
    
