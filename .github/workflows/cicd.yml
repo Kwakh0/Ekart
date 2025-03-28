@@ -35,7 +35,15 @@ jobs:
           trivy --version
 
     - name: Gitleaks Installation
-      run: sudo dnf install gitleaks -y
+      run: |
+         sudo dnf install -y wget curl
+         wget https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64 -O gitleaks      
+         chmod +x gitleaks
+         sudo mv gitleaks /usr/local/bin/  
+
+    - name: Run Gitleaks Scan
+      run: gitleaks detect --source=. --report=gitleaks-report.json --format=json || true
+      
     - name: Gitleaks Code Scan
       run: gitleaks detect source . -r gitleaks-report.json -f json
 
