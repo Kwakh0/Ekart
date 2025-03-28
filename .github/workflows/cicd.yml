@@ -34,9 +34,6 @@ jobs:
           sudo dnf install trivy_0.22.0_Linux-64bit.rpm
           trivy --version
 
-    - name: Trivy FS Scan
-      run: trivy fs --format table -o fs-report.json .
-
     - name: Gitleaks Installation
       run: |
           wget https://github.com/gitleaks/gitleaks/releases/latest/download/gitleaks-linux-amd64 -O gitleaks
@@ -45,6 +42,11 @@ jobs:
           gitleaks version
     - name: Gitleaks Code Scan
       run: gitleaks detect source . -r gitleaks-report.json -f json
+
+    - name: Trivy FS Scan
+      run: trivy fs --format table -o fs-report.json .
+
+
 
 
    
